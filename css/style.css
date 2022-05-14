@@ -1,0 +1,229 @@
+*::after,
+*::before,
+* {
+  outline: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+:root {
+  --font-roboto: 'Roboto', sans-serif;
+  --font-bitter: 'Bitter', serif;
+  --color-1: #f79a25;
+  --color-2: rgba(111, 155, 209, 0.1);
+  --font-color-1: #4c4d5f;
+  --font-color-2: #696c7a;
+
+  --grid-12-col: repeat(12, [col-start] 1fr [col-end]);
+  --grid-col-gap: 20px;
+}
+html {
+  font-size: 62.5%;
+  font-family: var(--font-roboto);
+  color: var(--font-color-2);
+}
+body {
+  box-sizing: border-box;
+  background-color: #fdfdfd;
+}
+
+section {
+  display: grid;
+  grid-template-columns: var(--grid-12-col);
+  column-gap: var(--grid-col-gap);
+}
+
+li {
+  list-style-image: url('../assets/svg/ok-tick.svg');
+}
+
+/* |# Botão */
+.btn {
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.btn--fill {
+  padding: 10px;
+  color: white;
+  background: #f79a25;
+  border-radius: 5px;
+}
+/* |# switch */
+
+.switch {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.switch__label {
+  position: relative;
+  cursor: pointer;
+  text-indent: -200%;
+  overflow: hidden;
+  width: 5rem;
+  height: 2.6rem;
+  display: block;
+  border-radius: 2rem;
+  background-color: var(--color-1);
+  color: transparent;
+}
+
+.switch__label::after {
+  content: '';
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  left: 8%;
+  top: 50%;
+  background-color: white;
+  transform: translate(0, -50%);
+  transition: all 500ms ease;
+}
+
+.switch:checked + .switch__label::after {
+  /* left: 92%; */
+  transform: translate(108%, -50%);
+}
+
+/* |# Planos */
+
+.pricing {
+  align-items: center;
+  row-gap: 3rem;
+}
+
+.pricing__title {
+  font-family: var(--font-bitter);
+  font-size: 5.8rem;
+  font-weight: bold;
+  color: var(--font-color-1);
+  grid-column: col-start 3 / col-end 7;
+}
+
+.pricing__types {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  grid-column: col-start 8 / col-end 10;
+  width: 35rem;
+}
+.pricing__types div {
+  position: relative;
+}
+.pricing__types img {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.5rem;
+  left: auto;
+  pointer-events: none;
+}
+.pricing__type {
+  width: 10rem;
+  font-size: 2.4rem;
+  color: rgba(105, 108, 122, 0.47);
+  text-transform: lowercase;
+}
+.pricing__type--active {
+  text-transform: uppercase;
+  color: var(--font-color-1);
+}
+
+.plans {
+  grid-column: col-start 3 / col-end 10;
+  display: flex;
+  /* align-items: flex-start; */
+  justify-content: center;
+  gap: 5rem;
+}
+
+.plan {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  /* gap: 3rem; */
+  padding: 7rem 5rem 3rem 5rem;
+  width: 39rem;
+  background-color: #fbfdff;
+  border: 1px solid #dee1e7;
+  border-radius: 5px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  overflow: hidden;
+}
+
+.plan--best::after,
+.plan--best::before {
+  content: 'Mais Popular';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 3rem;
+  font-size: 2.4rem;
+  background-color: var(--color-1);
+  top: 5rem;
+  right: -132px;
+  transform: rotate(45deg);
+  color: white;
+  text-align: center;
+}
+
+.plan__name {
+  font-size: 2.4rem;
+  color: var(--font-color-1);
+  margin-bottom: 2rem;
+}
+
+.plan__price {
+  color: var(--font-color-1);
+  width: 100%;
+  font-size: 4.8rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.plan__price span {
+  color: var(--font-color-2);
+  font-size: 2.4rem;
+}
+
+.plan__price span:first-child {
+  vertical-align: top;
+}
+
+.plan__price--hidden {
+  display: none;
+  visibility: 0;
+  opacity: 0;
+}
+
+.plan__separator {
+  background-color: var(--color-1);
+  height: 4px;
+  width: 100%;
+  margin-bottom: 4rem;
+}
+
+.plan__features-list {
+  margin-bottom: 3rem;
+  padding-left: 1.5rem;
+  font-size: 1.6rem;
+}
+
+.plan__feature + .plan__feature {
+  margin-top: 1.8rem;
+}
+
+.plan button {
+  font-size: 2rem;
+  align-self: center;
+  width: 75%;
+}

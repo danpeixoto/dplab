@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DPLAB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bitter&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <section class="pricing">
+      <h1 class="pricing__title">Planos & Preços</h1>
+      <div class="pricing__types">
+        <span class="pricing__type pricing__type--active">Mensal</span>
+        <input id="price-switch" type="checkbox" class="switch" aria-pressed="false" />
+        <label for="price-switch" class="switch__label" onclick="teste()">Alterar plano</label>
+        <img src="./assets/svg/cta-pricing.svg" alt="2 meses grátis" />
+
+        <span class="pricing__type">anual</span>
+      </div>
+
+      <div class="plans">
+        <!-- plan 1 -->
+        <div class="plan">
+          <p class="plan__name">Laboratório</p>
+          <p class="plan__price"><span>R$</span> 19,90 <span>/mês</span></p>
+          <p class="plan__price plan__price--hidden"><span>R$</span> 170,90 <span>/ano</span></p>
+          <hr class="plan__separator" />
+          <ul class="plan__features-list">
+            <li class="plan__feature">Aplicativos</li>
+            <li class="plan__feature">Imagens</li>
+            <li class="plan__feature">Projetos</li>
+            <li class="plan__feature">Dicas</li>
+            <li class="plan__feature" style="opacity: 0">oculto</li>
+          </ul>
+          <button class="btn btn--fill">Adquira já</button>
+        </div>
+
+        <!-- plan 2 -->
+        <div class="plan plan--best">
+          <p class="plan__name">Laboratório+</p>
+          <p class="plan__price"><span>R$</span> 59,90 <span>/mês</span></p>
+          <p class="plan__price plan__price--hidden"><span>R$</span> 400,90 <span>/ano</span></p>
+          <hr class="plan__separator" />
+          <ul class="plan__features-list">
+            <li class="plan__feature">Tudo no Laboratório, +...</li>
+            <li class="plan__feature">Mentorias</li>
+            <li class="plan__feature">Modelos</li>
+            <li class="plan__feature">Vídeos</li>
+            <li class="plan__feature">Reuniões</li>
+          </ul>
+          <button class="btn btn--fill">Experimente grátis</button>
+        </div>
+      </div>
+
+      <script>
+        function teste() {
+          const types = document.querySelectorAll('.pricing__types > span');
+
+          types.forEach((type) => type.classList.toggle('pricing__type--active'));
+          const plans = document.querySelectorAll('.plan');
+          plans.forEach((plan) => {
+            plan.classList.toggle('plan--best');
+            const planPrice1 = plan.querySelector('.plan__price:nth-child(2)');
+            const planPrice2 = plan.querySelector('.plan__price:nth-child(3)');
+            planPrice1.classList.toggle('plan__price--hidden');
+            planPrice2.classList.toggle('plan__price--hidden');
+          });
+        }
+      </script>
+    </section>
+
+    <section class="projects">
+      <h2 class="section__title">Projetos DIY para alavancar sua criatividade</h2>
+      <div class="projects__wrapper">
+        <!-- project 1 -->
+        <div class="project">
+          <h3 class="project__title">Colaborativos</h3>
+          <p class="project__description">
+            Faça projetos dispnibilisados por membros e compartilhe seus resultados.
+          </p>
+          <span class="project__price">Grátis</span>
+        </div>
+        <!-- project 2 -->
+        <div class="project">
+          <h3 class="project__title">Selecionados</h3>
+          <p class="project__description">Tenha acesso a todos os projetos DIY da plataforma.</p>
+          <span class="project__price">R$10 <span>/mês</span></span>
+        </div>
+        <!-- project 3 -->
+        <div class="project">
+          <h3 class="project__title">Secretos</h3>
+          <p class="project__description">Receba um projeto secreto por mês na sua casa!</p>
+          <span class="project__price">R$25 <span>/mês</span></span>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta">
+      <span class="cta__title">Participe do nosso laboratório</span
+      ><span class="cta__description"
+        >Aqui sua <span class="emphasis">criatividade</span> vira infinita</span
+      ><button class="btn--fill">Experimente grátis</button>
+    </div>
+
+    <section class="faq">
+      <h2 class="section__title emphasis">Perguntas Frequentes</h2>
+
+      <div class="questions">
+        <!-- question 1 -->
+        <div class="question">
+          <h3 class="question__title">Como funciona o período de teste?</h3>
+          <p class="question__answer">
+            Acreditamos tanto em nossa qualidade que se até 7 dias você não estiver satisfeito pode
+            cancelar a assinatura sem cobranças na fatura do cartão!
+          </p>
+        </div>
+
+        <!-- question 2 -->
+        <div class="question">
+          <h3 class="question__title">Posso alterar meu plano quando eu quiser?</h3>
+          <p class="question__answer"></p>
+        </div>
+        <!-- question 3 -->
+        <div class="question">
+          <h3 class="question__title">Quanto tempo demora para eu ter acesso à plataforma?</h3>
+          <p class="question__answer">
+            Assim que seu pagamento for concluído você irá receber um e-mail avisando-o!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer__main">
+        <img src="./assets/svg/logo.svg" alt="DPLAB" />
+        <div class="footer__pages footer__pages--row">
+          <a href="#">Sobre</a>
+          <a href="#">Suporte</a>
+          <a href="#">Carreiras</a>
+          <a href="#">Política</a>
+        </div>
+      </div>
+
+      <aside class="footer__secondary">
+        <div class="footer__pages">
+          <span>Páginas</span>
+          <a href="">Home</a>
+          <a href="">Preços</a>
+          <a href="">Avaliações</a>
+        </div>
+        <div class="footer__pages">
+          <span>Produtos</span>
+          <a href="">Laboratório</a>
+          <a href="">Laboratório+</a>
+          <a href="">DIY</a>
+        </div>
+      </aside>
+    </footer>
+  </body>
+</html>
