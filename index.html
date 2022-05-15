@@ -19,7 +19,9 @@
       <div class="pricing__types">
         <span class="pricing__type pricing__type--active">Mensal</span>
         <input id="price-switch" type="checkbox" class="switch" aria-pressed="false" />
-        <label for="price-switch" class="switch__label" onclick="teste()">Alterar plano</label>
+        <label for="price-switch" class="switch__label" onclick="handleSwitchToggle()"
+          >Alterar plano</label
+        >
         <img src="./assets/svg/cta-pricing.svg" alt="2 meses grátis" />
 
         <span class="pricing__type">anual</span>
@@ -58,55 +60,40 @@
           <button class="btn btn--fill">Experimente grátis</button>
         </div>
       </div>
-
-      <script>
-        function teste() {
-          const types = document.querySelectorAll('.pricing__types > span');
-
-          types.forEach((type) => type.classList.toggle('pricing__type--active'));
-          const plans = document.querySelectorAll('.plan');
-          plans.forEach((plan) => {
-            plan.classList.toggle('plan--best');
-            const planPrice1 = plan.querySelector('.plan__price:nth-child(2)');
-            const planPrice2 = plan.querySelector('.plan__price:nth-child(3)');
-            planPrice1.classList.toggle('plan__price--hidden');
-            planPrice2.classList.toggle('plan__price--hidden');
-          });
-        }
-      </script>
     </section>
 
     <section class="projects">
       <h2 class="section__title">Projetos DIY para alavancar sua criatividade</h2>
-      <div class="projects__wrapper">
-        <!-- project 1 -->
-        <div class="project">
-          <h3 class="project__title">Colaborativos</h3>
-          <p class="project__description">
-            Faça projetos dispnibilisados por membros e compartilhe seus resultados.
-          </p>
-          <span class="project__price">Grátis</span>
-        </div>
-        <!-- project 2 -->
-        <div class="project">
-          <h3 class="project__title">Selecionados</h3>
-          <p class="project__description">Tenha acesso a todos os projetos DIY da plataforma.</p>
-          <span class="project__price">R$10 <span>/mês</span></span>
-        </div>
-        <!-- project 3 -->
-        <div class="project">
-          <h3 class="project__title">Secretos</h3>
-          <p class="project__description">Receba um projeto secreto por mês na sua casa!</p>
-          <span class="project__price">R$25 <span>/mês</span></span>
-        </div>
+
+      <!-- project 1 -->
+      <div class="project">
+        <h3 class="project__title">Colaborativos</h3>
+        <p class="project__description">
+          Faça projetos dispnibilisados por membros e compartilhe seus resultados.
+        </p>
+        <span class="project__price">Grátis</span>
+      </div>
+      <!-- project 2 -->
+      <div class="project">
+        <h3 class="project__title">Selecionados</h3>
+        <p class="project__description">Tenha acesso a todos os projetos DIY da plataforma.</p>
+        <span class="project__price project__price--recurrent">R$10 </span>
+      </div>
+      <!-- project 3 -->
+      <div class="project">
+        <h3 class="project__title">Secretos</h3>
+        <p class="project__description">Receba um projeto secreto por mês na sua casa!</p>
+        <span class="project__price project__price--recurrent">R$25 </span>
       </div>
     </section>
 
     <div class="cta">
-      <span class="cta__title">Participe do nosso laboratório</span
-      ><span class="cta__description"
-        >Aqui sua <span class="emphasis">criatividade</span> vira infinita</span
-      ><button class="btn--fill">Experimente grátis</button>
+      <div class="cta__wrapper">
+        <span class="cta__title">Participe do nosso laboratório</span
+        ><span class="cta__description"
+          >Aqui sua <span class="emphasis">criatividade</span> vira infinita</span
+        ><button class="btn btn--fill">Experimente grátis</button>
+      </div>
     </div>
 
     <section class="faq">
@@ -163,5 +150,6 @@
         </div>
       </aside>
     </footer>
+    <script src="./js/index.js"></script>
   </body>
 </html>
