@@ -8,6 +8,7 @@ function selectAllElement(e) {
 
 const priceTypes = selectAllElement('.pricing__types > span');
 const plans = selectAllElement('.plan');
+const questions = selectAllElement('.question');
 
 function handleSwitchToggle() {
   priceTypes.forEach((type) => type.classList.toggle('pricing__type--active'));
@@ -20,3 +21,12 @@ function handleSwitchToggle() {
     planPrice2.classList.toggle('plan__price--hidden');
   });
 }
+
+function handleQuestionToggle(e) {
+  const question = e.srcElement;
+  question.classList.toggle('question--active');
+}
+
+questions.forEach((question) => {
+  question.addEventListener('click', handleQuestionToggle);
+});
