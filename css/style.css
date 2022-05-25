@@ -27,6 +27,7 @@ html {
 body {
   box-sizing: border-box;
   background-color: #fdfdfd;
+  overflow-x: hidden;
 }
 
 section,
@@ -127,6 +128,8 @@ li {
   background-color: #fdfdfd;
   width: 100%;
   height: 8rem;
+  overflow: visible;
+  /* overflow-x: hidden; */
 }
 
 .logo-wrapper {
@@ -134,6 +137,7 @@ li {
 }
 
 .nav {
+  position: relative;
   grid-column: col-start 4 / col-end 11;
   display: flex;
   align-items: center;
@@ -183,7 +187,71 @@ li {
 .nav-dropdown__item {
   border: rgba(105, 108, 122, 0.2) 1px solid;
   padding: 0.5rem;
+  transition: color 250ms;
 }
+
+.nav-dropdown__item:hover {
+  color: var(--color-1);
+}
+
+.nav-toggle {
+  display: none;
+  align-items: center;
+  width: 4rem;
+  height: 3rem;
+  padding: 0;
+  background-color: transparent;
+  overflow: visible;
+}
+
+.nav-toggle__container {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 0.3rem;
+  padding: 0;
+  background-color: var(--font-color-1);
+  transition: all 250ms;
+}
+.nav-toggle__container::after {
+  position: absolute;
+  content: '';
+  left: 0;
+  top: -1rem;
+  width: 100%;
+  height: 0.3rem;
+  padding: 0;
+  background-color: var(--font-color-1);
+  transition: all 250ms;
+}
+
+.nav-toggle__container::before {
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: -1rem;
+  width: 100%;
+  height: 0.3rem;
+  padding: 0;
+  background-color: var(--font-color-1);
+  transition: all 250ms;
+}
+
+.nav-toggle--close .nav-toggle__container {
+  background-color: transparent;
+}
+.nav-toggle--close .nav-toggle__container::after {
+  top: 0;
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+
+.nav-toggle--close .nav-toggle__container::before {
+  transform: rotate(-45deg);
+  transform-origin: center;
+  bottom: 0;
+}
+
 /* |# Planos */
 
 .pricing {
@@ -575,6 +643,68 @@ h2 + .project {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+  }
+}
+
+@media only screen and (max-width: 820px) {
+  .nav {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    grid-column: col-start 4 / -1;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0 3rem;
+    height: 100vh;
+    width: 30rem;
+    background-color: white;
+    border-left: var(--font-color-1) 3px solid;
+    transition: transform 250ms;
+  }
+
+  .nav-toggle {
+    display: flex;
+    grid-column: col-start 11 / col-end 11;
+    z-index: 1000;
+  }
+
+  .nav-toggle--close + .nav {
+    transform: translateX(0);
+  }
+  .nav-list {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .nav-list__item {
+    font-size: 2rem;
+    text-transform: capitalize;
+  }
+  .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+    margin-top: 1rem;
+  }
+
+  .nav-dropdown__item {
+    position: relative;
+    border: none;
+    padding: 1rem 3rem;
+    transition: color 250ms;
+  }
+
+  .nav-dropdown__item::before {
+    position: absolute;
+    content: '';
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border: 7px solid transparent;
+    border-left: 7px solid var(--color-1);
   }
 }
 

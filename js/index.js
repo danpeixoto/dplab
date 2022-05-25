@@ -9,7 +9,9 @@ function selectAllElement(e) {
 const priceTypes = selectAllElement('.pricing__types > span');
 const plans = selectAllElement('.plan');
 const questions = selectAllElement('.question');
+const nav = selectElement('nav');
 const navItem = selectElement('.nav-list__item:first-child');
+const menuToggle = selectElement('.nav-toggle');
 
 function handleSwitchToggle() {
   priceTypes.forEach((type) => type.classList.toggle('pricing__type--active'));
@@ -33,3 +35,7 @@ questions.forEach((question) => {
 });
 
 navItem.addEventListener('click', () => navItem.classList.toggle('nav-list__item--active'));
+
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('nav-toggle--close');
+});
